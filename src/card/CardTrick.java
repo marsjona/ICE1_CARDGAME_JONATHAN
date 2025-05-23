@@ -28,18 +28,13 @@ public class CardTrick {
             System.out.println(c.getSuit() + " " + c.getValue());
         }
 
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Enter a card value (1-13): ");
-        int userValue = input.nextInt();
-
-        System.out.print("Enter a suit (0-3 where 0=Hearts, 1=Diamonds, 2=Clubs, 3=Spades): ");
-        int suitIndex = input.nextInt();
-        String userSuit = Card.SUITS[suitIndex];
+        Card luckyCard = new Card();
+        luckyCard.setValue(1);
+        luckyCard.setSuit("Diamonds");
 
         boolean found = false;
         for (Card c : magicHand) {
-            if (c.getValue() == userValue && c.getSuit().equals(userSuit)) {
+            if (c.getValue() == luckyCard.getValue() && c.getSuit().equals(luckyCard.getSuit())) {
                 found = true;
                 break;
             }
