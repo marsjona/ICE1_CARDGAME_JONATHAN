@@ -6,40 +6,39 @@ package card;
 
 import java.util.Random;
 import java.util.Scanner;
+
 /**
- * A class that fills a magic hand of 7 cards with random Card Objects
- * and then asks the user to pick a card and searches the array of cards
- * for the match to the user's card. To be used as starting code in ICE 1
- * @author srinivsi
- * Modified by: Jonathan Marsh, 991248546
+ * A class that fills a magic hand of 7 cards with random Card Objects and then
+ * asks the user to pick a card and searches the array of cards for the match to
+ * the user's card. To be used as starting code in ICE 1
+ *
+ * @author srinivsi Modified by: Jonathan Marsh, 991248546
  */
 public class CardTrick {
-    
-    public static void main(String[] args)
-    {
+
+    public static void main(String[] args) {
         Card[] magicHand = new Card[7];
         Random rand = new Random();
-        
-        for (int i=0; i<magicHand.length; i++)
-        {
+
+        for (int i = 0; i < magicHand.length; i++) {
             Card c = new Card();
-                c.setValue(rand.nextInt(13)+1);
-                c.setSuit(Card.SUITS[rand.nextInt(4)]);
-                magicHand[i] =c;
-                System.out.println(c.getSuit() + " "+c.getValue());
+            c.setValue(rand.nextInt(13) + 1);
+            c.setSuit(Card.SUITS[rand.nextInt(4)]);
+            magicHand[i] = c;
+            System.out.println(c.getSuit() + " " + c.getValue());
         }
-        
+
         Scanner input = new Scanner(System.in);
-        
-        System.out.print("Enter a card value (1-13: ");
+
+        System.out.print("Enter a card value (1-13): ");
         int userValue = input.nextInt();
-        
+
         System.out.print("Enter a suit (0-3 where 0=Hearts, 1=Diamonds, 2=Clubs, 3=Spades): ");
         int suitIndex = input.nextInt();
         String userSuit = Card.SUITS[suitIndex];
-        
+
         boolean found = false;
-        for (Card c: magicHand){
+        for (Card c : magicHand) {
             if (c.getValue() == userValue && c.getSuit().equals(userSuit)) {
                 found = true;
                 break;
@@ -51,5 +50,5 @@ public class CardTrick {
             System.out.println("Sorry, your card is not in the magic hand.");
         }
     }
-    
+
 }
